@@ -1,10 +1,21 @@
 module.exports = {
-  packagerConfig: {},
+  packagerConfig: {
+    "icon": "./chatgpt",
+    "name": "chatGPT",
+    "executableName": "chatGPT"
+  },
   rebuildConfig: {},
   makers: [
     {
       name: '@electron-forge/maker-squirrel',
-      config: {},
+      config: {
+        "authors": "Bit-Scripts Team",
+        "name": "chatGPT",
+        "loadingGif": ".\\chatgptfond.png",
+        "setupIcon": ".\\chatgpt.ico",
+        "icon": ".\\chatgpt.ico",
+        "iconUrl": "https://cdn.discordapp.com/attachments/1082898952191483934/1083117919757680691/chatgpt.ico"
+      },
     },
     {
       name: '@electron-forge/maker-zip',
