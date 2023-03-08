@@ -137,6 +137,7 @@ nav {
   border-radius: 20px;
   margin-left: auto;
   margin-right: auto;
+  overflow-y: hidden;
 }
 
 .messages {

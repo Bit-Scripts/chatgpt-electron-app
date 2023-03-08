@@ -85,7 +85,9 @@ function exchangeMessages() {
 
 
 const submit = document.getElementById("submitButton");
-submit.addEventListener('click', exchangeMessages);
+submit.addEventListener('click', (event) => {
+    exchangeMessages();
+});
 
 const textarea = document.getElementById("question");
 textarea.addEventListener("keydown", (event) => {
