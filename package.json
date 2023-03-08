@@ -1,0 +1,27 @@
+{
+  "name": "chatgpt-electron-app",
+  "version": "1.0.0",
+  "description": "Utilisation ChatGPT dans une application",
+  "main": "index.js",
+  "repository": "git@github.com:Bit-Scripts/chatgpt-electron-app.git",
+  "author": "Paullux et Diamonyx",
+  "license": "GPL v3",
+  "private": true,
+  "scripts": {
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "^6.0.5",
+    "@electron-forge/maker-deb": "^6.0.5",
+    "@electron-forge/maker-rpm": "^6.0.5",
+    "@electron-forge/maker-squirrel": "^6.0.5",
+    "@electron-forge/maker-zip": "^6.0.5",
+    "electron": "^23.1.2"
+  },
+  "dependencies": {
+    "@cliqz/adblocker-electron": "^1.26.2",
+    "electron-squirrel-startup": "^1.0.0"
+  }
+}

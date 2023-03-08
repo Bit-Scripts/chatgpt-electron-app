@@ -1,0 +1,36 @@
+<!--index.html-->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chatGPT Electron App</title>
+    <link rel="icon" href="chatgpt.ico" />
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" rel="stylesheet"  type='text/css'>
+  </head>
+  <body>
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <object class="videoBA" data=""></object>
+        </div>
+    </div>
+    <header class="header">
+        <img class="imgTitleBar" src="chatgptico.png">
+        <h1 class="titrebar">ChatGPT Electron App</h1>
+        <nav> 
+        <button class="minimize-btn btn" id="minimize-btn" title="duire"><i class="fa fa-window-minimize" id="icons-btn-min"></i></button>
+        <button class="maximize-btn btn" id="maximize-btn" title="Maximiser"><i class="fa fa-window-maximize" id="icons-btn-max"></i></button>
+        <button class="close-btn btn" id="close-btn" title="Fermer"><i class="fa fa-xmark" id="icons-btn-close"></i></button>
+        </nav>
+    </header>
+    <!-- Vous pouvezgalement demander que d'autres fichiers s'ecutent dans ce processus -->
+    <script src="./renderer.js"></script>
+  </body>
+</html> 
