@@ -1,6 +1,7 @@
 const { ipcRenderer } = require('electron')
 const ipc = ipcRenderer
-
+const marked = require('marked')
+const DOMPurify = require('dompurify');
 const fs = require('fs');
 const path = require('path');
 
@@ -51,3 +52,44 @@ if (titreApp !== null) {
         ipc.send('titreApp')
     })
 }
+
+
+
+function exchangeMessages() {
+    let first = true
+    let messages = document.getElementById("messages");
+    let question = document.getElementById("question").value;
+    document.getElementById("question").setAttribute('value', '');
+    document.getElementById("question").value = "";
+
+
+    // send username to main.js 
+    ipc.send('asynchronous-message', question)
+    question = DOMPurify.sanitize(marked.parse(question));
+    if (messages.innerHTML !== '') {
+        messages.innerHTML += "<br><br>Utilisateur : " + question;
+    } else {
+        messages.innerHTML = "Utilisateur : " + question;
+    }
+    
+    // receive message from main.js
+    ipc.on('asynchronous-reply', (event, responseGPT) => {
+        if (first) {
+            responseGPT = DOMPurify.sanitize(marked.parse(responseGPT));
+            messages.innerHTML += "<br><br>chatGPT : " + responseGPT;
+            first = false;
+        }
+    })
+    messages.scrollTop = messages.scrollHeight;
+}
+
+
+const submit = document.getElementById("submitButton");
+submit.addEventListener('click', exchangeMessages);
+
+const textarea = document.getElementById("question");
+textarea.addEventListener("keydown", (event) => {
+    if (event.key === 'Enter') {
+        exchangeMessages(); 
+    }
+});

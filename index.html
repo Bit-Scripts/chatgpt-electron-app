@@ -30,6 +30,20 @@
         <button class="close-btn btn" id="close-btn" title="Fermer"><i class="fa fa-xmark" id="icons-btn-close"></i></button>
         </nav>
     </header>
+    <main class="main">
+      <section class="response" id="response">
+        <div class="messages" id="messages" markdown="1"></div>
+      </section>
+      <form name="ipcForm" class="form">
+        <div class="form-entry">
+          <label for="question">Posez votre question</label>
+          <input type='text' name="question" id="question" raw="1" cols ="50" placeholder="Entrez votre texte ici..." @keypress.enter="exchangeMessages()" required></textarea>
+        </div>
+        <div class="form-submit">
+          <input id="submitButton" class="submitButton" value="Envoyer !" disabled>
+        </div>
+      </form>
+    </main>
     <!-- Vous pouvezgalement demander que d'autres fichiers s'ecutent dans ce processus -->
     <script src="./renderer.js"></script>
   </body>
