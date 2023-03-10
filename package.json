@@ -25,6 +25,7 @@
     "dompurify": "^3.0.1",
     "electron-localshortcut": "^3.2.1",
     "electron-squirrel-startup": "^1.0.0",
+    "highlight.js": "^11.7.0",
     "marked": "^4.2.12",
     "openai": "^3.2.1",
     "os": "^0.1.2"
