@@ -207,41 +207,41 @@ nav {
 }
 
 .btn {
-    top: 0;
-    font-size: 10px;
-    
-    height: 30px;
-    width: 60px;
-    padding-top: calc(15px - 7px);
-    color: black;
-    z-index: 0;
-    border: 0.5px solid  rgba(0, 0, 0, 0);;
-    cursor: pointer;
-    -webkit-app-region: no-drag;
-    text-shadow: 1px 1px 2px #888;
-  }
+  top: 0;
+  font-size: 10px;
+  
+  height: 30px;
+  width: 60px;
+  padding-top: calc(15px - 7px);
+  color: black;
+  z-index: 0;
+  border: 0.5px solid  rgba(0, 0, 0, 0);;
+  cursor: pointer;
+  -webkit-app-region: no-drag;
+  text-shadow: 1px 1px 2px #888;
+}
   
 .minimize-btn {
     background-color: rgba(127, 127, 127, 0.3);
-  }
+}
   
 .maximize-btn {
-    background-color: rgba(127, 127, 127, 0.3);
-  }
+  background-color: rgba(127, 127, 127, 0.3);
+}
   
 .close-btn {
-    background-color: rgba(127, 127, 127, 0.3);
-  }
+  background-color: rgba(127, 127, 127, 0.3);
+}
   
 .btn:hover {
-    background-color:rgba(17, 84, 151, 0.8);
-    backdrop-filter: blur(2px);
-  }
+  background-color:rgba(157, 159, 161, 0.3);
+  backdrop-filter: blur(2px);
+}
   
 .close-btn:hover {
-    background-color:rgba(255, 0, 0, 0.8);
-    backdrop-filter: blur(2px);
-  }
+  background-color:rgba(255, 0, 0, 0.8);
+  backdrop-filter: blur(2px);
+}
 
   
 #orgaButton {
@@ -272,35 +272,103 @@ nav {
 }
 
 /* The Modal (background) */
-.modal {
+#myModal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 6; /* Sit on top */
   left: 0;
   top: 0;
-  width: 99vw; /* Full width */
-  height: min(calc( 100vw / 1.666666667), 100vh); /* Full height */
+  width: 100vw; /* Full width */
+  height: 100vh; /* Full height */
   overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
+  background-color: rgba(0,0,0,0.3); /* Black w/ opacity */
 }
 
 /* Modal Content/Box */
 .modal-content {
   position: fixed;
-  margin-left: calc((100vw - 80vw) / 2);
-  margin-top: max(calc((100vh - 80vh) / 2), calc((100vh - (80vw / 1.666666667)) / 2));
-  background-color: #202020;
+  margin-left: calc((100vw - 95vw) / 2);
+  margin-top: calc((100vh - 95vh) / 2);
+  background-color: #343540;
   border: 1px solid #888;
-  width: 80vw; /* Could be more or less, depending on screen size */
-  height: min(calc( 80vw / 1.666666667), 80vh);
+  width: 95vw; /* Could be more or less, depending on screen size */
+  height: 95vh;
+  border-radius: 15px;
+  text-align: center;
+}
+
+.settings {
+  background-color: #343540;
+  border: #b8b6ac 3px solid;
+  color: #b8b6ac;
+  border-radius: 20px;
+  width: calc(70vw - 6px);
+  height: 6vh;
+  font-size: 1em;
+  vertical-align: middle;
+  padding: 10px;
+  margin: 15px;
+  margin-top: 30px;
+  margin-bottom: 50px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.settingsTitle {
+  background-color: #343540;
+  color: #b8b6ac;
+  width: calc(70vw - 6px);
+  height: 6vh;
+  font-size: 1.5em;
+  text-align: center;
+  padding: 10px;
+  margin-top: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 15px;
+}
+
+.labelSettings {
+  background-color: #343540;
+  color: #b8b6ac;
+  border-radius: 20px;
+  width: calc(70vw - 6px);
+  height: 6vh;
+  font-size: 1em;
+  vertical-align: middle;
+  padding: 10px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 15px;
+}
+
+#saveSettingsButton {
+  background-color: #b8b6ac;
+  color: #343540;
+  width: 30vw;
+  height: 40px;
+  border-radius: 20px;
+  font-size: 1.5em;
+  text-align: center;
+  cursor: pointer;
+}
+
+.fa-gear {
+  position: fixed;
+  color:#b8b6ac;
+  right: 25px;
+  font-size: 2em;
 }
 
 /* The Close Button */
 .close {
   position: fixed;
   color: #f00;
-  margin-left: 5px;
+  left: 40px;
+  top: 25px;
   font-size: 28px;
   font-weight: bold;
   z-index: 2;
@@ -311,4 +379,16 @@ nav {
   color: rgb(146, 23, 23);
   text-decoration: none;
   cursor: pointer;
+}
+
+#Utilisateur {
+  color: rgb(21, 95, 114);
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+#chatGPT {
+  color: rgb(221, 102, 65);
+  font-weight: bold;
+  text-decoration: underline;
 }

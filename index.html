@@ -10,7 +10,7 @@
     <title>chatGPT Electron App</title>
     <link rel="icon" href="chatgpt.ico" />
     <link rel="stylesheet" href="styles.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" rel="stylesheet"  type='text/css'>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" rel="stylesheet"  type='text/css'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github-dark-dimmed.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
   </head>
@@ -19,17 +19,34 @@
     <div id="myModal" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
-            <span class="close">&times;</span>
-            <object class="videoBA" data=""></object>
+            <span id="close" class="close">&times;</span>
+            <h2 class="settingsTitle">Paramètres</h2>
+            <form name="settings" class="form">
+              <div class="form-entry">
+                <label for="identity" class="labelSettings">Quel est votre nom ?</label>
+                <input type='text' name="identity" class="settings" id="identityUser" raw="1" cols ="50" placeholder="Entrez votre nom (ou pseudo) ici..." @keypress.enter="changeUsername()" required>
+              </div>
+              <div class="form-entry">
+                <label for="identity" class="labelSettings">Changer le nom du chatbot ?</label>
+                <input type='text' name="identity" class="settings" id="identityBot" raw="1" cols ="50" placeholder="Entrez un nom pour le chatbot ici..." @keypress.enter="changeBotname()" required>
+              </div>
+              <div class="form-entry">
+                <label for="identity" class="labelSettings">Ecrivez ici votre prompt pour changer la personnalité de chatGPT ?</label>
+                <input type='text' name="identity" class="settings" id="identityPersonnalityBot" raw="1" cols ="50" placeholder="Entrez votre nom (ou pseudo) ici..." @keypress.enter="changePrompt()" required>
+              </div>
+              <div class="form-submit">
+                <input id="saveSettingsButton" class="submitButton settings" value="Envoyer !" readonly="readonly">
+              </div>
+            </form>     
         </div>
     </div>
     <header class="header">
         <img class="imgTitleBar" src="chatgpt.png">
         <h1 class="titrebar">ChatGPT Electron App</h1>
         <nav> 
-        <button class="minimize-btn btn" id="minimize-btn" title="duire"><i class="fa fa-window-minimize" id="icons-btn-min"></i></button>
-        <button class="maximize-btn btn" id="maximize-btn" title="Maximiser"><i class="fa fa-window-maximize" id="icons-btn-max"></i></button>
-        <button class="close-btn btn" id="close-btn" title="Fermer"><i class="fa fa-xmark" id="icons-btn-close"></i></button>
+          <button class="minimize-btn btn" id="minimize-btn" title="duire"><i class="fa fa-window-minimize" id="icons-btn-min"></i></button>
+          <button class="maximize-btn btn" id="maximize-btn" title="Maximiser"><i class="fa fa-window-maximize" id="icons-btn-max"></i></button>
+          <button class="close-btn btn" id="close-btn" title="Fermer"><i class="fa fa-xmark" id="icons-btn-close"></i></button>
         </nav>
     </header>
     <main class="main">
@@ -39,13 +56,18 @@
       <form name="ipcForm" class="form">
         <div class="form-entry">
           <label for="question">Posez votre question</label>
-          <input type='text' name="question" id="question" raw="1" cols ="50" placeholder="Entrez votre texte ici..." @keypress.enter="exchangeMessages()" required></textarea>
+          <input type='text' name="question" id="question" raw="1" cols ="50" placeholder="Entrez votre texte ici..." @keypress.enter="exchangeMessages()" required>
         </div>
         <div class="form-submit">
           <input id="submitButton" class="submitButton" value="Envoyer !" readonly="readonly">
         </div>
       </form>
     </main>
+    <footer>
+      <button id="settings">
+        <i class="fa-solid fa-gear"></i>
+      </button>
+    </footer>
     <!-- Vous pouvezgalement demander que d'autres fichiers s'ecutent dans ce processus -->
     <script src="./renderer.js"></script>
   </body>

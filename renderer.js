@@ -4,6 +4,7 @@ const marked = require('marked')
 const DOMPurify = require('dompurify');
 const fs = require('fs');
 const path = require('path');
+const { BlockList } = require('net');
 
 let userDataPath = process.env.APPDATA;
 
@@ -53,7 +54,7 @@ if (titreApp !== null) {
     })
 }
 
-
+let launch = true;
 
 function exchangeMessages() {
     marked.setOptions({
@@ -80,24 +81,31 @@ function exchangeMessages() {
 
     // send username to main.js 
     ipc.send('asynchronous-message', question)
-    question = DOMPurify.sanitize(marked.parse(question));
-    if (messages.innerHTML !== '') {
-        messages.innerHTML += "<br><br>Utilisateur : " + question;
-    } else {
-        messages.innerHTML = "Utilisateur : " + question;
+    if (!launch) {
+        question = DOMPurify.sanitize(marked.parse(question));
+        if (messages.innerHTML !== '') {
+            messages.innerHTML += "<br><br><div id='Utilisateur'>Utilisateur : </div>" + question;
+        } else {
+            messages.innerHTML = "<div id='Utilisateur'>Utilisateur : </div>" + question;
+        }
     }
-    
+    launch = false;
     // receive message from main.js
     ipc.on('asynchronous-reply', (event, responseGPT) => {
         if (first) {
             responseGPT = DOMPurify.sanitize(marked.parse(responseGPT));
-            messages.innerHTML += "<br><br>chatGPT : " + responseGPT;
+            if (messages.innerHTML !== '') {
+                messages.innerHTML += "<br><br><div id='chatGPT'>Marv : </div>" + responseGPT;
+            } else {
+                messages.innerHTML += "<div id='chatGPT'>Marv : </div>" + responseGPT;
+            }            
             first = false;
         }
     })
     messages.scrollTop = messages.scrollHeight;
 }
 
+exchangeMessages();
 
 const submit = document.getElementById("submitButton");
 submit.addEventListener('click', (event) => {
@@ -110,3 +118,24 @@ textarea.addEventListener("keydown", (event) => {
         exchangeMessages(); 
     }
 });
+
+
+const settings = document.getElementById('settings');
+const close = document.getElementById('close');
+let myModal = document.getElementById('myModal');
+
+settings.addEventListener('click', (event) => {
+    showModal();
+});
+
+close.addEventListener('click', (event) => {
+    showModal();
+});
+
+function showModal() {
+    if (myModal.style.display === 'none') {
+        myModal.style.display = 'block';
+    } else {
+        myModal.style.display = 'none'
+    }
+}
