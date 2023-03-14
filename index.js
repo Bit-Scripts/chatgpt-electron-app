@@ -21,6 +21,8 @@ const { ElectronBlocker, fullLists, Request } = require('@cliqz/adblocker-electr
 const { Configuration, OpenAIApi } = require("openai");
 const { OPENAI_API_KEY, OPENAI_API_ORGA } = require('./config.json');
 
+let historic = '';
+
 //process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true'
 
 let handleSquirrelEvent = function() {
@@ -212,11 +214,11 @@ ipc.on('asynchronous-message', async (event, question) => {
 
   const gptResponse = await openai.createChatCompletion({
     model: "gpt-3.5-turbo",
-    messages: [{role: "system", content: personality }, {role: "user", content: question }]
+    messages: [{role: "system", content: personality }, {role: "system", content: historic },{role: "user", content: question }]
   });
 
   responseGPT = gptResponse.data.choices[0].message.content;
-
+  historic = question + '\n' + gptResponse;
   // send message to index.html
   event.sender.send('asynchronous-reply', responseGPT);
 })
